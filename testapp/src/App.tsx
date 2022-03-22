@@ -18,6 +18,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={()=>window.alert('test')}>test</button>
       </header>
     </div>
   );
