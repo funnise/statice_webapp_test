@@ -19,6 +19,7 @@ function App() {
           Learn React
         </a>
         <button onClick={()=>window.alert('test')}>test</button>
+        <a href="/.auth/login/aad">Login</a>
       </header>
     </div>
   );
