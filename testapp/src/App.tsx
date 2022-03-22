@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [message, setMessage] = useState<any>(null)
   const getUserInfo = async() => {
     window.alert('getUserInfo');
     const response = await fetch('/.auth/me');
@@ -13,25 +14,19 @@ function App() {
   }
   useEffect(()=> {
     getUserInfo()
-  },[])
+  },[]);
+  const getDataFromAPI = async() => {
+  const response = await( await fetch(`/api/message`)).json();
+  setMessage(response)
+  }
   
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>{message}</div>
         <button onClick={()=>window.alert('test')}>test</button>
         <button onClick={()=>getUserInfo()}>fetch</button>
+        <button onClick={()=>getDataFromAPI()}>message</button>
         <a href="/.auth/login/aad">Login</a>
       </header>
     </div>
