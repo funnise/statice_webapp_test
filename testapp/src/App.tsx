@@ -4,9 +4,11 @@ import './App.css';
 
 function App() {
   const getUserInfo = async() => {
+    window.alert('getUserInfo');
     const response = await fetch('/.auth/me');
     const payload = await response.json();
     const { clientPrincipal } = payload;
+    window.alert(`clientPrincipal: ${clientPrincipal}`);
     return clientPrincipal;
   }
   useEffect(()=> {
