@@ -8,7 +8,7 @@ function App() {
     const response = await fetch('/.auth/me');
     const payload = await response.json();
     const { clientPrincipal } = payload;
-    window.alert(`clientPrincipal: ${clientPrincipal}`);
+    window.alert(`clientPrincipal: ${JSON.stringify(clientPrincipal)}`);
     return clientPrincipal;
   }
   useEffect(()=> {
