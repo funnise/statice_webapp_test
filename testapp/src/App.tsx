@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const getUserInfo = async() => {
+    const response = await fetch('/.auth/me');
+    const payload = await response.json();
+    const { clientPrincipal } = payload;
+    return clientPrincipal;
+  }
+  useEffect(()=> {
+    getUserInfo()
+  },[])
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +29,7 @@ function App() {
           Learn React
         </a>
         <button onClick={()=>window.alert('test')}>test</button>
+        <button onClick={()=>getUserInfo()}>fetch</button>
         <a href="/.auth/login/aad">Login</a>
       </header>
     </div>
